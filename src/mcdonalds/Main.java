@@ -5,6 +5,12 @@
  */
 package mcdonalds;
 
+import ADReNA_API.Data.DataSet;
+import ADReNA_API.NeuralNetwork.Backpropagation;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JComboBox;
+
 /**
  *
  * @author felipe
@@ -16,6 +22,69 @@ public class Main extends javax.swing.JFrame {
      */
     public Main() {
         initComponents();
+        
+        JComboBox combo_alface = cb_alface;
+        combo_alface.addItem("Sim");
+        combo_alface.addItem("Não");
+        
+        JComboBox combo_bacon = cb_bacon;
+        combo_bacon.addItem("Sim");
+        combo_bacon.addItem("Não");
+        
+        JComboBox combo_maionese = cb_maionese;
+        combo_maionese.addItem("Sim");
+        combo_maionese.addItem("Não");
+        
+        JComboBox combo_ketchup = cb_ketchup;
+        combo_ketchup.addItem("Sim");
+        combo_ketchup.addItem("Não");
+        
+        JComboBox combo_picles = cb_picles;
+        combo_picles.addItem("Sim");
+        combo_picles.addItem("Não");
+        
+        JComboBox combo_tomate = cb_tomate;
+        combo_tomate.addItem("Sim");
+        combo_tomate.addItem("Não");
+        
+        JComboBox combo_mostarda = cb_mostarda;
+        combo_mostarda.addItem("Sim");
+        combo_mostarda.addItem("Não");
+        
+        JComboBox combo_cebola = cb_cebola;
+        combo_cebola.addItem("Sim");
+        combo_cebola.addItem("Não");
+        combo_cebola.addItem("Caramelizada");
+        combo_cebola.addItem("Cebola Crispy");
+        
+        JComboBox combo_carne = cb_tipo_carne;
+        combo_carne.addItem("Carne Bouvina");
+        combo_carne.addItem("Carne de Frango");
+        
+        JComboBox combo_tipo_pao = cb_tipo_pao;
+        combo_tipo_pao.addItem("Pão Tostado");
+        combo_tipo_pao.addItem("Pão com Gergilin");
+        combo_tipo_pao.addItem("Pão Brioche");
+        
+        JComboBox combo_tipo_queijo = cb_tipo_queijo;
+        combo_tipo_queijo.addItem("Não");
+        combo_tipo_queijo.addItem("Muçarela");
+        combo_tipo_queijo.addItem("Parmesão");
+        combo_tipo_queijo.addItem("Cheddar Melt");
+        
+        JComboBox combo_pao = cb_quantidade_pao;
+        combo_pao.addItem("1");
+        combo_pao.addItem("2");
+        
+        JComboBox combo_queijo = cb_quantidade_queijo;
+        combo_queijo.addItem("1");
+        combo_queijo.addItem("2");
+        
+        JComboBox combo_hamburguers = cb_quantidade_hamburguers;
+        combo_hamburguers.addItem("1");
+        combo_hamburguers.addItem("2");
+        combo_hamburguers.addItem("3");
+        combo_hamburguers.addItem("4");
     }
 
     /**
@@ -28,6 +97,8 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        jLabel2 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         lb_quantidade_pao = new javax.swing.JLabel();
         cb_quantidade_pao = new javax.swing.JComboBox<>();
         lb_quantidade_queijo = new javax.swing.JLabel();
@@ -60,248 +131,251 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Reconhecedor de McDonalds");
+        setPreferredSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mcdonalds/img/mc.png"))); // NOI18N
+        getContentPane().add(jLabel2, new java.awt.GridBagConstraints());
+
+        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         lb_quantidade_pao.setText("Quantidade de Pãos");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
-        getContentPane().add(lb_quantidade_pao, gridBagConstraints);
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(lb_quantidade_pao, gridBagConstraints);
 
-        cb_quantidade_pao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(cb_quantidade_pao, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(cb_quantidade_pao, gridBagConstraints);
 
         lb_quantidade_queijo.setText("Quantidade de Queijos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
-        getContentPane().add(lb_quantidade_queijo, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(lb_quantidade_queijo, gridBagConstraints);
 
-        cb_quantidade_queijo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(cb_quantidade_queijo, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(cb_quantidade_queijo, gridBagConstraints);
 
         lb_quantidade_hamburguers.setText("Quantidade de Hamburguers");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
-        getContentPane().add(lb_quantidade_hamburguers, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(lb_quantidade_hamburguers, gridBagConstraints);
 
-        cb_quantidade_hamburguers.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(cb_quantidade_hamburguers, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(cb_quantidade_hamburguers, gridBagConstraints);
 
         lb_tipo_queijo.setText("Tipo do Queijo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
-        getContentPane().add(lb_tipo_queijo, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(lb_tipo_queijo, gridBagConstraints);
 
-        cb_tipo_queijo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(cb_tipo_queijo, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(cb_tipo_queijo, gridBagConstraints);
 
         lb_tomate.setText("Tomate");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
-        getContentPane().add(lb_tomate, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(lb_tomate, gridBagConstraints);
 
-        cb_tomate.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(cb_tomate, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(cb_tomate, gridBagConstraints);
 
         lb_bacon.setText("Bacon");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
-        getContentPane().add(lb_bacon, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(lb_bacon, gridBagConstraints);
 
-        cb_bacon.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(cb_bacon, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(cb_bacon, gridBagConstraints);
 
         lb_tipo_carne.setText("Tipo da Carne");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(lb_tipo_carne, gridBagConstraints);
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(lb_tipo_carne, gridBagConstraints);
 
-        cb_tipo_carne.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(cb_tipo_carne, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
+        jPanel1.add(cb_tipo_carne, gridBagConstraints);
 
         lb_picles.setText("Picles");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(lb_picles, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(lb_picles, gridBagConstraints);
 
-        cb_picles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(cb_picles, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
+        jPanel1.add(cb_picles, gridBagConstraints);
 
         lb_alface.setText("Alface");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(lb_alface, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(lb_alface, gridBagConstraints);
 
-        cb_alface.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(cb_alface, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
+        jPanel1.add(cb_alface, gridBagConstraints);
 
         lb_ketchup.setText("Ketchup");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(lb_ketchup, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(lb_ketchup, gridBagConstraints);
 
-        cb_ketchup.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 5;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(cb_ketchup, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
+        jPanel1.add(cb_ketchup, gridBagConstraints);
 
         lb_tipo_pao.setText("Tipo do Pão");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(lb_tipo_pao, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(lb_tipo_pao, gridBagConstraints);
 
-        cb_tipo_pao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(cb_tipo_pao, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
+        jPanel1.add(cb_tipo_pao, gridBagConstraints);
 
         lb_cebola.setText("Cebola");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
-        getContentPane().add(lb_cebola, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(lb_cebola, gridBagConstraints);
 
-        cb_cebola.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(cb_cebola, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(cb_cebola, gridBagConstraints);
 
         lb_mostarda.setText("Mostarda");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(lb_mostarda, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(lb_mostarda, gridBagConstraints);
 
-        cb_mostarda.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 6;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(cb_mostarda, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
+        jPanel1.add(cb_mostarda, gridBagConstraints);
 
         lb_maionese.setText("Maionese");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(lb_maionese, gridBagConstraints);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(lb_maionese, gridBagConstraints);
 
-        cb_maionese.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 4;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 10);
-        getContentPane().add(cb_maionese, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 10);
+        jPanel1.add(cb_maionese, gridBagConstraints);
 
         bt_reconhecer.setText("Reconhecer");
         bt_reconhecer.addActionListener(new java.awt.event.ActionListener() {
@@ -310,17 +384,166 @@ public class Main extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(bt_reconhecer, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 0);
-        getContentPane().add(bt_reconhecer, gridBagConstraints);
+        getContentPane().add(jPanel1, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_reconhecerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_reconhecerActionPerformed
-       
+        double[] query = new double[20]; 
+        query[0] = cb_alface.getSelectedItem().toString() == "Sim" ? 1 : 0;        
+        query[1] = cb_bacon.getSelectedItem().toString() == "Sim" ? 1 : 0;
+        query[2] = cb_maionese.getSelectedItem().toString() == "Sim" ? 1 : 0;
+        query[3] = cb_ketchup.getSelectedItem().toString() == "Sim" ? 1 : 0;
+        query[4] = cb_picles.getSelectedItem().toString() == "Sim" ? 1 : 0;
+        query[5] = cb_tomate.getSelectedItem().toString() == "Sim" ? 1 : 0;
+        query[6] = cb_mostarda.getSelectedItem().toString() == "Sim" ? 1 : 0;
+        query[7] = cb_tipo_carne.getSelectedItem().toString() == "Carne Bouvina" ? 1 : 0;
+        query[8] = cb_quantidade_pao.getSelectedItem().toString() == "2" ? 1 : 0;
+        query[9] = cb_quantidade_queijo.getSelectedItem().toString() == "2" ? 1 : 0;
+        
+        switch(cb_cebola.getSelectedItem().toString())
+        {
+            case "Pão Tostado":
+                query[10] = 0;
+                query[11] = 0;
+                break;
+                
+            case "Pão com Gergilin":
+                query[10] = 0;
+                query[11] = 1;
+                break;
+                
+            case "Pão Brioche":
+                query[10] = 1;
+                query[11] = 0;
+                break;
+        }
+        
+        switch(cb_cebola.getSelectedItem().toString())
+        {
+            case "Sim":
+                query[12] = 0;
+                query[13] = 0;
+                break;
+                
+            case "Não":
+                query[12] = 0;
+                query[13] = 1;
+                break;
+                
+            case "Caramelizada":
+                query[12] = 1;
+                query[13] = 0;
+                break;
+           
+            case "Cebola Crispy":
+                query[12] = 1;
+                query[13] = 1;
+                break;    
+        }
+        
+        switch(cb_tipo_queijo.getSelectedItem().toString())
+        {
+            case "Não":
+                query[14] = 0;
+                query[15] = 0;
+                break;
+                
+            case "Muçarela":
+                query[14] = 0;
+                query[15] = 1;
+                break;
+                
+            case "Parmesão":
+                query[14] = 1;
+                query[15] = 0;
+                break;
+           
+            case "Cheddar Melt":
+                query[14] = 1;
+                query[15] = 1;
+                break;    
+        }
+        
+        switch(cb_quantidade_hamburguers.getSelectedItem().toString())
+        {
+            case "1":
+                query[16] = 0;
+                query[17] = 0;
+                break;
+                
+            case "2":
+                query[16] = 0;
+                query[17] = 1;
+                break;
+                
+            case "3":
+                query[16] = 1;
+                query[17] = 0;
+                break;
+           
+            case "4":
+                query[16] = 1;
+                query[17] = 1;
+                break;    
+        }
+                
+        Backpropagation RNA = new Backpropagation(17, 5);
+        RNA.SetLearningRate(0.3);
+        RNA.SetErrorRate(0.005);
+        RNA.SetMaxIterationNumber(10000);
+        
+        DataSet traningSet = new DataSet(17, 5);
+        try {
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 0, 0, 0, 0}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 0, 0, 0, 1}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 0, 0, 1, 0}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 0, 0, 1, 1}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 0, 1, 0, 0}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 0, 1, 0, 1}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 0, 1, 1, 0}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 0, 1, 1, 1}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 1, 0, 0, 0}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 1, 0, 0, 1}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 1, 0, 1, 0}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 1, 0, 1, 1}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 1, 1, 0, 0}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 1, 1, 0, 1}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 1, 1, 1, 0}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 1, 1, 1, 1}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {1, 0, 0, 0, 0}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {1, 0, 0, 0, 1}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {1, 0, 0, 1, 0}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {1, 0, 0, 1, 1}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {1, 0, 1, 0, 0}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {1, 0, 1, 0, 1}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {1, 0, 1, 1, 0}));
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {1, 0, 1, 1, 1}));
+
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        try {
+            RNA.Learn(traningSet);
+            RNA.Recognize(query);
+        } catch (Exception ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_bt_reconhecerActionPerformed
 
     /**
@@ -374,6 +597,8 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_tipo_pao;
     private javax.swing.JComboBox<String> cb_tipo_queijo;
     private javax.swing.JComboBox<String> cb_tomate;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lb_alface;
     private javax.swing.JLabel lb_bacon;
     private javax.swing.JLabel lb_cebola;
