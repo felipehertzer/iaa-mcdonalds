@@ -98,6 +98,13 @@ public class Main extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jLabel2 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        lb_learning_rate = new javax.swing.JLabel();
+        cb_learning_rate = new javax.swing.JTextField();
+        lb_error_rate = new javax.swing.JLabel();
+        cb_error_rate = new javax.swing.JTextField();
+        lb_max_iteration = new javax.swing.JLabel();
+        cb_max_iteration = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         lb_quantidade_pao = new javax.swing.JLabel();
         cb_quantidade_pao = new javax.swing.JComboBox<>();
@@ -128,15 +135,74 @@ public class Main extends javax.swing.JFrame {
         lb_maionese = new javax.swing.JLabel();
         cb_maionese = new javax.swing.JComboBox<>();
         bt_reconhecer = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        error_rate = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        iteration_number = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Reconhecedor de McDonalds");
-        setPreferredSize(new java.awt.Dimension(800, 500));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mcdonalds/img/mc.png"))); // NOI18N
-        getContentPane().add(jLabel2, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        getContentPane().add(jLabel2, gridBagConstraints);
 
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Definições do Algoritmo"));
+        jPanel3.setLayout(new java.awt.GridBagLayout());
+
+        lb_learning_rate.setText("LearningRate");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
+        jPanel3.add(lb_learning_rate, gridBagConstraints);
+
+        cb_learning_rate.setText("0.3");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
+        jPanel3.add(cb_learning_rate, gridBagConstraints);
+
+        lb_error_rate.setText("ErrorRate");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
+        jPanel3.add(lb_error_rate, gridBagConstraints);
+
+        cb_error_rate.setText("0.005");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
+        jPanel3.add(cb_error_rate, gridBagConstraints);
+
+        lb_max_iteration.setText("Max Iteration");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
+        jPanel3.add(lb_max_iteration, gridBagConstraints);
+
+        cb_max_iteration.setText("10000");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel3.add(cb_max_iteration, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(jPanel3, gridBagConstraints);
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Caracteristicas do Hamburguer"));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
         lb_quantidade_pao.setText("Quantidade de Pãos");
@@ -387,21 +453,63 @@ public class Main extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
         jPanel1.add(bt_reconhecer, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
         getContentPane().add(jPanel1, gridBagConstraints);
+
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Resultados"));
+        jPanel2.setLayout(new java.awt.GridBagLayout());
+
+        jLabel1.setText("Erro atingido");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
+        jPanel2.add(jLabel1, gridBagConstraints);
+
+        error_rate.setToolTipText("");
+        error_rate.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
+        jPanel2.add(error_rate, gridBagConstraints);
+
+        jLabel3.setText("Número de iterações");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
+        jPanel2.add(jLabel3, gridBagConstraints);
+
+        iteration_number.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel2.add(iteration_number, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 1;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
+        getContentPane().add(jPanel2, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bt_reconhecerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_reconhecerActionPerformed
+        error_rate.setText("");
+        iteration_number.setText("");
+        
         double[] query = new double[20]; 
         query[0] = cb_alface.getSelectedItem().toString() == "Sim" ? 1 : 0;        
         query[1] = cb_bacon.getSelectedItem().toString() == "Sim" ? 1 : 0;
@@ -502,9 +610,9 @@ public class Main extends javax.swing.JFrame {
         }
                 
         Backpropagation RNA = new Backpropagation(17, 5);
-        RNA.SetLearningRate(0.3);
-        RNA.SetErrorRate(0.005);
-        RNA.SetMaxIterationNumber(10000);
+        RNA.SetLearningRate(Double.parseDouble(cb_learning_rate.getText()));
+        RNA.SetErrorRate(Double.parseDouble(cb_error_rate.getText()));
+        RNA.SetMaxIterationNumber(Integer.parseInt(cb_max_iteration.getText()));
         
         DataSet traningSet = new DataSet(17, 5);
         try {
@@ -539,7 +647,10 @@ public class Main extends javax.swing.JFrame {
         
         try {
             RNA.Learn(traningSet);
-            RNA.Recognize(query);
+            double[] retorno = RNA.Recognize(query);
+            error_rate.setText(Double.toString(RNA.GetErrorRate()));
+            iteration_number.setText(Double.toString(RNA.GetIterationNumber()));
+            // mostrar imagem            
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -586,8 +697,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_alface;
     private javax.swing.JComboBox<String> cb_bacon;
     private javax.swing.JComboBox<String> cb_cebola;
+    private javax.swing.JTextField cb_error_rate;
     private javax.swing.JComboBox<String> cb_ketchup;
+    private javax.swing.JTextField cb_learning_rate;
     private javax.swing.JComboBox<String> cb_maionese;
+    private javax.swing.JTextField cb_max_iteration;
     private javax.swing.JComboBox<String> cb_mostarda;
     private javax.swing.JComboBox<String> cb_picles;
     private javax.swing.JComboBox<String> cb_quantidade_hamburguers;
@@ -597,13 +711,22 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_tipo_pao;
     private javax.swing.JComboBox<String> cb_tipo_queijo;
     private javax.swing.JComboBox<String> cb_tomate;
+    private javax.swing.JTextField error_rate;
+    private javax.swing.JTextField iteration_number;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JLabel lb_alface;
     private javax.swing.JLabel lb_bacon;
     private javax.swing.JLabel lb_cebola;
+    private javax.swing.JLabel lb_error_rate;
     private javax.swing.JLabel lb_ketchup;
+    private javax.swing.JLabel lb_learning_rate;
     private javax.swing.JLabel lb_maionese;
+    private javax.swing.JLabel lb_max_iteration;
     private javax.swing.JLabel lb_mostarda;
     private javax.swing.JLabel lb_picles;
     private javax.swing.JLabel lb_quantidade_hamburguers;
