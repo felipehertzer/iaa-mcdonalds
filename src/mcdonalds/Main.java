@@ -60,6 +60,7 @@ public class Main extends javax.swing.JFrame {
         JComboBox combo_carne = cb_tipo_carne;
         combo_carne.addItem("Carne Bouvina");
         combo_carne.addItem("Carne de Frango");
+        combo_carne.addItem("Carne de Peixe");
         
         JComboBox combo_tipo_pao = cb_tipo_pao;
         combo_tipo_pao.addItem("Pão Tostado");
@@ -75,16 +76,24 @@ public class Main extends javax.swing.JFrame {
         JComboBox combo_pao = cb_quantidade_pao;
         combo_pao.addItem("1");
         combo_pao.addItem("2");
+        combo_pao.addItem("3");
+        combo_pao.addItem("4");
         
         JComboBox combo_queijo = cb_quantidade_queijo;
         combo_queijo.addItem("1");
         combo_queijo.addItem("2");
+        combo_queijo.addItem("3");
+        combo_queijo.addItem("Não");
         
         JComboBox combo_hamburguers = cb_quantidade_hamburguers;
         combo_hamburguers.addItem("1");
         combo_hamburguers.addItem("2");
         combo_hamburguers.addItem("3");
         combo_hamburguers.addItem("4");
+        
+        JComboBox combo_ovo = cb_ovo;
+        combo_ovo.addItem("Sim");
+        combo_ovo.addItem("Não");
     }
 
     /**
@@ -105,6 +114,10 @@ public class Main extends javax.swing.JFrame {
         cb_error_rate = new javax.swing.JTextField();
         lb_max_iteration = new javax.swing.JLabel();
         cb_max_iteration = new javax.swing.JTextField();
+        lb_numero_camadas = new javax.swing.JLabel();
+        cb_numero_camadas = new javax.swing.JTextField();
+        lb_tamanho_camadas = new javax.swing.JLabel();
+        cb_tamanho_camadas = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         lb_quantidade_pao = new javax.swing.JLabel();
         cb_quantidade_pao = new javax.swing.JComboBox<>();
@@ -135,6 +148,8 @@ public class Main extends javax.swing.JFrame {
         lb_maionese = new javax.swing.JLabel();
         cb_maionese = new javax.swing.JComboBox<>();
         bt_reconhecer = new javax.swing.JButton();
+        lb_ovo = new javax.swing.JLabel();
+        cb_ovo = new javax.swing.JComboBox<>();
         jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         error_rate = new javax.swing.JTextField();
@@ -143,7 +158,7 @@ public class Main extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Reconhecedor de McDonalds");
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 650));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/mcdonalds/img/mc.png"))); // NOI18N
@@ -161,7 +176,7 @@ public class Main extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
         jPanel3.add(lb_learning_rate, gridBagConstraints);
 
-        cb_learning_rate.setText("0.3");
+        cb_learning_rate.setText("0.5");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
@@ -187,12 +202,44 @@ public class Main extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
         jPanel3.add(lb_max_iteration, gridBagConstraints);
 
-        cb_max_iteration.setText("10000");
+        cb_max_iteration.setText("15000");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel3.add(cb_max_iteration, gridBagConstraints);
+
+        lb_numero_camadas.setText("Nº de Camadas Interm.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 10, 0);
+        jPanel3.add(lb_numero_camadas, gridBagConstraints);
+
+        cb_numero_camadas.setText("2");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 10, 0);
+        jPanel3.add(cb_numero_camadas, gridBagConstraints);
+
+        lb_tamanho_camadas.setText("Tamanho Camada Interm.");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.VERTICAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 10, 0);
+        jPanel3.add(lb_tamanho_camadas, gridBagConstraints);
+
+        cb_tamanho_camadas.setText("12");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(0, 10, 10, 0);
+        jPanel3.add(cb_tamanho_camadas, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -230,6 +277,11 @@ public class Main extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
         jPanel1.add(lb_quantidade_queijo, gridBagConstraints);
 
+        cb_quantidade_queijo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_quantidade_queijoActionPerformed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -451,10 +503,25 @@ public class Main extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
         jPanel1.add(bt_reconhecer, gridBagConstraints);
+
+        lb_ovo.setText("Ovo");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(lb_ovo, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 0, 0);
+        jPanel1.add(cb_ovo, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -510,7 +577,7 @@ public class Main extends javax.swing.JFrame {
         error_rate.setText("");
         iteration_number.setText("");
         
-        double[] query = new double[20]; 
+        double[] query = new double[22]; 
         query[0] = cb_alface.getSelectedItem().toString() == "Sim" ? 1 : 0;        
         query[1] = cb_bacon.getSelectedItem().toString() == "Sim" ? 1 : 0;
         query[2] = cb_maionese.getSelectedItem().toString() == "Sim" ? 1 : 0;
@@ -518,128 +585,231 @@ public class Main extends javax.swing.JFrame {
         query[4] = cb_picles.getSelectedItem().toString() == "Sim" ? 1 : 0;
         query[5] = cb_tomate.getSelectedItem().toString() == "Sim" ? 1 : 0;
         query[6] = cb_mostarda.getSelectedItem().toString() == "Sim" ? 1 : 0;
-        query[7] = cb_tipo_carne.getSelectedItem().toString() == "Carne Bouvina" ? 1 : 0;
-        query[8] = cb_quantidade_pao.getSelectedItem().toString() == "2" ? 1 : 0;
-        query[9] = cb_quantidade_queijo.getSelectedItem().toString() == "2" ? 1 : 0;
         
-        switch(cb_cebola.getSelectedItem().toString())
+        switch(cb_tipo_carne.getSelectedItem().toString())
+        {
+            case "Carne Bouvina":
+                query[7] = 0;
+                query[8] = 0;
+                break;
+                
+            case "Carne de Frango":
+                query[7] = 0;
+                query[8] = 1;
+                break;
+                
+            case "Carne de Peixe":
+                query[7] = 1;
+                query[8] = 0;
+                break;  
+        }
+        
+        switch(cb_quantidade_pao.getSelectedItem().toString())
+        {
+            case "1":
+                query[9] = 0;
+                query[10] = 0;
+                break;
+                
+            case "2":
+                query[9] = 0;
+                query[10] = 1;
+                break;
+                
+            case "3":
+                query[9] = 1;
+                query[10] = 0;
+                break;
+           
+            case "Não":
+                query[9] = 1;
+                query[10] = 1;
+                break;    
+        }
+        
+        switch(cb_tipo_pao.getSelectedItem().toString())
         {
             case "Pão Tostado":
-                query[10] = 0;
                 query[11] = 0;
+                query[12] = 0;
                 break;
                 
             case "Pão com Gergilin":
-                query[10] = 0;
-                query[11] = 1;
+                query[11] = 0;
+                query[12] = 1;
                 break;
                 
             case "Pão Brioche":
-                query[10] = 1;
-                query[11] = 0;
+                query[11] = 1;
+                query[12] = 0;
                 break;
         }
         
         switch(cb_cebola.getSelectedItem().toString())
         {
             case "Sim":
-                query[12] = 0;
                 query[13] = 0;
+                query[14] = 0;
                 break;
                 
             case "Não":
-                query[12] = 0;
-                query[13] = 1;
+                query[13] = 0;
+                query[14] = 1;
                 break;
                 
             case "Caramelizada":
-                query[12] = 1;
-                query[13] = 0;
+                query[13] = 1;
+                query[14] = 0;
                 break;
            
             case "Cebola Crispy":
-                query[12] = 1;
                 query[13] = 1;
+                query[14] = 1;
                 break;    
         }
         
         switch(cb_tipo_queijo.getSelectedItem().toString())
         {
             case "Não":
-                query[14] = 0;
                 query[15] = 0;
+                query[16] = 0;
                 break;
                 
             case "Muçarela":
-                query[14] = 0;
-                query[15] = 1;
+                query[15] = 0;
+                query[16] = 1;
                 break;
                 
             case "Parmesão":
-                query[14] = 1;
-                query[15] = 0;
+                query[15] = 1;
+                query[16] = 0;
                 break;
            
             case "Cheddar Melt":
-                query[14] = 1;
                 query[15] = 1;
+                query[16] = 1;
                 break;    
         }
         
         switch(cb_quantidade_hamburguers.getSelectedItem().toString())
         {
             case "1":
-                query[16] = 0;
                 query[17] = 0;
+                query[18] = 0;
                 break;
                 
             case "2":
-                query[16] = 0;
-                query[17] = 1;
+                query[17] = 0;
+                query[18] = 1;
                 break;
                 
             case "3":
-                query[16] = 1;
-                query[17] = 0;
+                query[17] = 1;
+                query[18] = 0;
                 break;
            
             case "4":
-                query[16] = 1;
                 query[17] = 1;
+                query[18] = 1;
                 break;    
         }
-                
-        Backpropagation RNA = new Backpropagation(17, 5);
-        RNA.SetLearningRate(Double.parseDouble(cb_learning_rate.getText()));
-        RNA.SetErrorRate(Double.parseDouble(cb_error_rate.getText()));
-        RNA.SetMaxIterationNumber(Integer.parseInt(cb_max_iteration.getText()));
         
-        DataSet traningSet = new DataSet(17, 5);
+        switch(cb_quantidade_queijo.getSelectedItem().toString())
+        {
+            case "1":
+                query[19] = 0;
+                query[20] = 0;
+                break;
+                
+            case "2":
+                query[19] = 0;
+                query[20] = 1;
+                break;
+                
+            case "3":
+                query[19] = 1;
+                query[20] = 0;
+                break;
+           
+            case "4":
+                query[19] = 1;
+                query[20] = 1;
+                break;    
+        }
+        
+        query[21] = cb_ovo.getSelectedItem().toString() == "Sim" ? 1 : 0;
+        
+        /*StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < query.length; i++) {
+            sb.append((int) query[i]);
+            if (i != query.length - 1) {
+                sb.append(", ");
+            }
+        }
+        String joined = sb.toString();
+        
+        System.out.println(joined); */   
+        int camadas[] = new int[Integer.valueOf(this.cb_numero_camadas.getText())];
+
+        for (int i = 0; i < Integer.valueOf(this.cb_numero_camadas.getText()); i++) {
+                camadas[i] = Integer.valueOf(this.cb_tamanho_camadas.getText());
+        }
+                        
+        Backpropagation RNA = new Backpropagation(22, 5, camadas);
+        RNA.SetLearningRate(new Double(cb_learning_rate.getText()));
+        RNA.SetErrorRate(new Double(cb_error_rate.getText()));
+        RNA.SetMaxIterationNumber(Integer.valueOf(cb_max_iteration.getText()));
+        
+        DataSet traningSet = new DataSet(22, 5);
         try {
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 0, 0, 0, 0}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 0, 0, 0, 1}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 0, 0, 1, 0}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 0, 0, 1, 1}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 0, 1, 0, 0}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 0, 1, 0, 1}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 0, 1, 1, 0}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 0, 1, 1, 1}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 1, 0, 0, 0}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 1, 0, 0, 1}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 1, 0, 1, 0}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 1, 0, 1, 1}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 1, 1, 0, 0}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 1, 1, 0, 1}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 1, 1, 1, 0}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {0, 1, 1, 1, 1}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {1, 0, 0, 0, 0}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {1, 0, 0, 0, 1}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {1, 0, 0, 1, 0}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {1, 0, 0, 1, 1}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {1, 0, 1, 0, 0}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {1, 0, 1, 0, 1}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {1, 0, 1, 1, 0}));
-            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0}, new double[] {1, 0, 1, 1, 1}));
+            //triplo-quarterao
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 0}, new double[] {0, 0, 0, 0, 0}));
+            //egg-quarterao
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 1}, new double[] {0, 0, 0, 0, 1}));
+            //triplo-tasty
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 1, 0, 0, 0, 0}, new double[] {0, 0, 0, 1, 0}));
+            //big-tasty
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 0, 0}, new double[] {0, 0, 0, 1, 1}));
+            //mcnifico-bacon
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {1, 1, 1, 1, 0, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0}, new double[] {0, 0, 1, 0, 0}));
+            //duplo-quarterao
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 1, 0}, new double[] {0, 0, 1, 0, 1}));
+            //big-mac
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 0}, new double[] {0, 0, 1, 1, 0}));
+            //quarterao-com-queijo
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 1, 0}, new double[] {0, 0, 1, 1, 1}));
+            //cheddar-mcmelt
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 0, 0, 0, 0, 0}, new double[] {0, 1, 0, 0, 0}));
+            //triplo-burger-bacon
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0}, new double[] {0, 1, 0, 0, 1}));
+            //triplo-cheeseburger
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 0, 0}, new double[] {0, 1, 0, 1, 0}));
+            //mcduplo
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 0}, new double[] {0, 1, 0, 1, 1}));
+            //duplo-salada
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {1, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 1, 1, 1, 0}, new double[] {0, 1, 1, 0, 0}));
+            //cheeseburger
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0}, new double[] {0, 1, 1, 0, 1}));
+            //hamburger
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0, 0, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, new double[] {0, 1, 1, 1, 0}));
+            //clubhouse
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0}, new double[] {0, 1, 1, 1, 1}));
+            //quatrro-formaggi
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0, 1, 0, 1, 0, 1, 1, 0, 0, 0, 1, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0}, new double[] {1, 0, 0, 0, 0}));
+            //crispy-onion-barbecue
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0, 1, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 0, 0}, new double[] {1, 0, 0, 0, 1}));
+            //big-tasty-chicken-bacon
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {1, 1, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0, 0}, new double[] {1, 0, 0, 1, 0}));
+            //chicken-supreme
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {1, 0, 0, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 0, 0, 0, 0}, new double[] {1, 0, 0, 1, 1}));
+            //mcchicken
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {1, 0, 1, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0}, new double[] {1, 0, 1, 0, 0}));
+            //mcfish
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0}, new double[] {1, 0, 1, 0, 1}));
+            //extra-chicken
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 1, 0, 1, 0, 1, 0, 0, 0, 0, 1, 1, 0}, new double[] {1, 0, 1, 1, 0}));
+            //grand-cheddar-mcmelt-bacon
+            traningSet.Add(new ADReNA_API.Data.DataSetObject(new double[] {0, 1, 0, 1, 0, 0, 1, 0, 0, 1, 0, 0, 1, 1, 0, 1, 1, 0, 1, 0, 1, 0}, new double[] {1, 0, 1, 1, 1}));
 
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
@@ -650,12 +820,35 @@ public class Main extends javax.swing.JFrame {
             double[] retorno = RNA.Recognize(query);
             error_rate.setText(Double.toString(RNA.GetErrorRate()));
             iteration_number.setText(Double.toString(RNA.GetIterationNumber()));
+            
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < retorno.length; i++) {
+                int resposta = 0;
+                if(retorno[i] > 0.6)
+                {
+                    resposta = 1;
+                }
+                sb.append(resposta);
+                if (i != retorno.length - 1) {
+                    sb.append("");
+                }
+            }
+            String joined = sb.toString();
+
+            System.out.println(joined);
+            Image image = new Image(joined);
+            image.setVisible(true);
             // mostrar imagem            
         } catch (Exception ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
         
     }//GEN-LAST:event_bt_reconhecerActionPerformed
+
+    private void cb_quantidade_queijoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_quantidade_queijoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_quantidade_queijoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -703,10 +896,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cb_maionese;
     private javax.swing.JTextField cb_max_iteration;
     private javax.swing.JComboBox<String> cb_mostarda;
+    private javax.swing.JTextField cb_numero_camadas;
+    private javax.swing.JComboBox<String> cb_ovo;
     private javax.swing.JComboBox<String> cb_picles;
     private javax.swing.JComboBox<String> cb_quantidade_hamburguers;
     private javax.swing.JComboBox<String> cb_quantidade_pao;
     private javax.swing.JComboBox<String> cb_quantidade_queijo;
+    private javax.swing.JTextField cb_tamanho_camadas;
     private javax.swing.JComboBox<String> cb_tipo_carne;
     private javax.swing.JComboBox<String> cb_tipo_pao;
     private javax.swing.JComboBox<String> cb_tipo_queijo;
@@ -728,10 +924,13 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel lb_maionese;
     private javax.swing.JLabel lb_max_iteration;
     private javax.swing.JLabel lb_mostarda;
+    private javax.swing.JLabel lb_numero_camadas;
+    private javax.swing.JLabel lb_ovo;
     private javax.swing.JLabel lb_picles;
     private javax.swing.JLabel lb_quantidade_hamburguers;
     private javax.swing.JLabel lb_quantidade_pao;
     private javax.swing.JLabel lb_quantidade_queijo;
+    private javax.swing.JLabel lb_tamanho_camadas;
     private javax.swing.JLabel lb_tipo_carne;
     private javax.swing.JLabel lb_tipo_pao;
     private javax.swing.JLabel lb_tipo_queijo;
