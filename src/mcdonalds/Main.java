@@ -58,13 +58,13 @@ public class Main extends javax.swing.JFrame {
         combo_cebola.addItem("Cebola Crispy");
         
         JComboBox combo_carne = cb_tipo_carne;
-        combo_carne.addItem("Carne Bouvina");
+        combo_carne.addItem("Carne Bovina");
         combo_carne.addItem("Carne de Frango");
         combo_carne.addItem("Carne de Peixe");
         
         JComboBox combo_tipo_pao = cb_tipo_pao;
         combo_tipo_pao.addItem("Pão Tostado");
-        combo_tipo_pao.addItem("Pão com Gergilin");
+        combo_tipo_pao.addItem("Pão com Gergelim");
         combo_tipo_pao.addItem("Pão Brioche");
         
         JComboBox combo_tipo_queijo = cb_tipo_queijo;
@@ -252,7 +252,7 @@ public class Main extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Caracteristicas do Hamburguer"));
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        lb_quantidade_pao.setText("Quantidade de Pãos");
+        lb_quantidade_pao.setText("Quantidade de Pães");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -578,6 +578,7 @@ public class Main extends javax.swing.JFrame {
         iteration_number.setText("");
         
         double[] query = new double[22]; 
+        
         query[0] = cb_alface.getSelectedItem().toString() == "Sim" ? 1 : 0;        
         query[1] = cb_bacon.getSelectedItem().toString() == "Sim" ? 1 : 0;
         query[2] = cb_maionese.getSelectedItem().toString() == "Sim" ? 1 : 0;

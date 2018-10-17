@@ -175,7 +175,7 @@
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lb_quantidade_pao">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Quantidade de P&#xe3;os"/>
+            <Property name="text" type="java.lang.String" value="Quantidade de P&#xe3;es"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
